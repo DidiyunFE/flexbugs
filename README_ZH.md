@@ -491,8 +491,7 @@ This issue can be avoided by adding a non-inline display value to the items, e.g
 
 ### Flexbug #13
 
-_Importance is ignored on flex-basis when using flex shorthand_
-_(flex: 0 0 auto !important;)，important不会作用在flex-basis上_
+_ ```flex: 0 0 auto !important;```, `!important` 不会作用在flex-basis上_
 
 <table>
   <tr>
@@ -508,16 +507,11 @@ _(flex: 0 0 auto !important;)，important不会作用在flex-basis上_
   </tr>
 </table>
 
-When applying `!important` to a `flex` shorthand declaration, IE 10 applies `!important` to the `flex-grow` and `flex-shrink` parts but not to the `flex-basis` part. Demo [13.1.a](https://codepen.io/philipwalton/pen/ZbRoYw) shows an example of a declaration with `!important` not overriding another declaration in IE 10.
-
 当`!important` 应用在 `flex` 的简写声明中时, 在IE 10 中`!important` 只对 `flex-grow` 和 `flex-shrink` 起作用， `flex-basis` 并不起作用. 例子 [13.1.a](https://codepen.io/philipwalton/pen/ZbRoYw) 展示了在 IE 10 中`!important` 声明中的 `flex-basic` 会被其他选择器覆盖.
 
-#### Workaround
 #### 解决方案
 
-If you need the `flex-basis` part of your `flex` declaration to be `!important` and you have to support IE 10, make sure to include a `flex-basis` declaration separately. Demo [13.1.b](https://codepen.io/philipwalton/pen/rOKvNb) shows an example of this working in IE 10.
-
-增加针对 `flex-basis` 的独立 css 如： 
+增加针对 `flex-basis` 的单独 css 如： 
 ```css
   flex: 0 0 100%!important;
   flex-basis: 100%!important;

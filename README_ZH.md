@@ -19,8 +19,8 @@ As the spec continues to evolve and vendors nail down their implementations, thi
 10. [`align-items: baseline` doesn't work with nested flex containers](#flexbug-10)
 11. [Min and max size declarations are ignored when wrapping flex items](#flexbug-11)
 12. [Inline elements are not treated as flex-items](#flexbug-12)
-13. [Importance is ignored on flex-basis when using flex shorthand](#flexbug-13)
-14. [Shrink-to-fit containers with `flex-flow: column wrap` do not contain their items](#flexbug-14)
+13. [flex 简写语法使用 !importance 不会作用在 flex-basis 上](#flexbug-13)
+14. [ “内容决定尺寸” 的 containers 上添加 `flex-flow: column wrap` 会引起子元素溢出](#flexbug-14)
 15. [Column flex items ignore `margin: auto` on the cross axis](#flexbug-15)
 16. [`flex-basis` cannot be animated](#flexbug-16)
 17. [Flex items are not correctly justified when `max-width` is used](#flexbug-17)
@@ -523,7 +523,7 @@ _ ```flex: 0 0 auto !important;```, `!important` 不会作用在flex-basis上_
 
 ### Flexbug #14
 
-_ 在 `收缩以适应`(如：display: inline-flex;) 的flex容器中添加 `flex-flow: column wrap`， 子元素会溢出父元素范围 _
+_ 在 `内容决定尺寸`(如：display: inline-flex;) 的flex容器中添加 `flex-flow: column wrap`， 子元素会溢出父元素范围 _
 
 <table>
   <tr>
@@ -551,7 +551,7 @@ _ 在 `收缩以适应`(如：display: inline-flex;) 的flex容器中添加 `fle
   </tr>
 </table>
 
-如果 flex 容器是 float 或 `inline-flex` 或绝对定位,  容器的大小由其内容决定 (称之为： shrink-to-fit => `收缩以适应` ).
+如果 flex 容器是 float 或 `inline-flex` 或绝对定位,  容器的大小由其内容决定 (称之为： shrink-to-fit => `内容决定尺寸` ).
 
 当添加 `flex-flow: column wrap` 时, 某些浏览器没有根据其内容正确调整容器的大小，并且存在不必要的溢出。 Demo [14.1.a](https://codepen.io/philipwalton/pen/vWbdZW).
 

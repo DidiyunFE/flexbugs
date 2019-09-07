@@ -507,7 +507,7 @@ _ ```flex: 0 0 auto !important;```, `!important` 不会作用在flex-basis上_
   </tr>
 </table>
 
-当`!important` 应用在 `flex` 的简写声明中时, 在IE 10 中`!important` 只对 `flex-grow` 和 `flex-shrink` 起作用， `flex-basis` 并不起作用. 例子 [13.1.a](https://codepen.io/philipwalton/pen/ZbRoYw) 展示了在 IE 10 中`!important` 声明中的 `flex-basic` 会被其他选择器覆盖.
+当`!important` 应用在 `flex` 的简写声明中时, 在IE 10 中`!important` 只对 `flex-grow` 和 `flex-shrink` 起作用， `flex-basis` 并不起作用. IE 10 中： 例子 [13.1.a](https://codepen.io/philipwalton/pen/ZbRoYw) 里 `flex: 0 0 100%!important;` 声明的 `flex-basic` 值会被其他选择器覆盖.
 
 #### 解决方案
 
@@ -523,7 +523,7 @@ _ ```flex: 0 0 auto !important;```, `!important` 不会作用在flex-basis上_
 
 ### Flexbug #14
 
-_Shrink-to-fit containers with `flex-flow: column wrap` do not contain their items_
+_ 在 `收缩以适应`(如：display: inline-flex;) 的flex容器中添加 `flex-flow: column wrap`， 子元素会溢出父元素范围 _
 
 <table>
   <tr>
@@ -551,15 +551,15 @@ _Shrink-to-fit containers with `flex-flow: column wrap` do not contain their ite
   </tr>
 </table>
 
-If you float a flex container, use `inline-flex`, or absolutely position it, the size of the container becomes determined by its content (a.k.a shrink-to-fit).
+如果 flex 容器是 float 或 `inline-flex` 或绝对定位,  容器的大小由其内容决定 (称之为： shrink-to-fit => `收缩以适应` ).
 
-When using `flex-flow: column wrap`, some browsers do not properly size the container based on its content, and there is unwanted overflow. Demo [14.1.a](https://codepen.io/philipwalton/pen/vWbdZW) shows an example of this.
+当添加 `flex-flow: column wrap` 时, 某些浏览器没有根据其内容正确调整容器的大小，并且存在不必要的溢出。 Demo [14.1.a](https://codepen.io/philipwalton/pen/vWbdZW).
 
-#### Workaround
+#### 解决方案
 
-If your container has a fixed height (usually the case when you enable wrapping), you avoid this bug by using `flex-flow: row wrap` (note `row` instead of `column`) and fake the column behavior by updating the container's [writing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode) (and reseting it on the items). Demo [14.1.b](https://codepen.io/philipwalton/pen/RjvQgx) shows an example of this working in all modern browsers.
+如果您的容器具有固定高度（通常是启用包装时的情况），可以使用 `flex-flow: row wrap` (用 `row` 代替 `column`) 并且修改容器的 [writing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode) (在子项上重置回来). 例子 [14.1.b](https://codepen.io/philipwalton/pen/RjvQgx) .
 
-**Note:** To use this workaround in Safari 10 you may need to set explicit dimensions on the flex items. Demo [14.1.c](https://codepen.io/philipwalton/pen/MOxQBg) shows an example of how this can be needed in Safari 10.
+**注意:** 要在Safari 10中使用此解决方法，您可能需要在弹性项目上设置显式尺寸。 例子[14.1.c](https://codepen.io/philipwalton/pen/MOxQBg) 显示了Safari 10中如何使用它.
 
 
 ### Flexbug #15

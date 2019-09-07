@@ -553,13 +553,13 @@ _ 在 `内容决定尺寸`(如：display: inline-flex;) 的flex容器中添加 `
 
 如果 flex 容器是 float 或 `inline-flex` 或绝对定位,  容器的大小由其内容决定 (称之为： shrink-to-fit => `内容决定尺寸` ).
 
-当添加 `flex-flow: column wrap` 时, 某些浏览器没有根据其内容正确调整容器的大小，并且存在不必要的溢出。 Demo [14.1.a](https://codepen.io/philipwalton/pen/vWbdZW).
+当添加 `flex-flow: column wrap` 时, 某些浏览器没有根据其内容正确调整容器的大小，并且存在不必要的溢出。 例子 [14.1.a](https://codepen.io/philipwalton/pen/vWbdZW).
 
 #### 解决方案
 
-如果您的容器具有固定高度（通常是启用包装时的情况），可以使用 `flex-flow: row wrap` (用 `row` 代替 `column`) 并且修改容器的 [writing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode) (在子项上重置回来). 例子 [14.1.b](https://codepen.io/philipwalton/pen/RjvQgx) .
+如果您的容器具有固定高度（通常是启用包装时的情况），可以使用 `flex-flow: row wrap` (用 `row` 代替 `column`) 并且修改容器的 [writing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode) (在子项上重置回来). 例子 [14.1.b](https://codepen.io/philipwalton/pen/RjvQgx).
 
-**注意:** 要在Safari 10中使用此解决方法，您可能需要在弹性项目上设置显式尺寸。 例子[14.1.c](https://codepen.io/philipwalton/pen/MOxQBg) 显示了Safari 10中如何使用它.
+**注意:** 要在Safari 10中使用此解决方法，您可能需要在弹性项目上设置显式尺寸。 例子[14.1.c](https://codepen.io/philipwalton/pen/MOxQBg).
 
 
 ### Flexbug #15
